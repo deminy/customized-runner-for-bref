@@ -1,0 +1,49 @@
+service: customized-runner-for-bref
+
+provider:
+  name: aws
+  region: us-east-1
+
+plugins:
+  - ./vendor/bref/bref
+  - ./vendor/bref/extra-php-extensions
+
+package:
+  patterns:
+    - '!**'
+    - 'demo/**'
+    - 'src/**'
+    - 'vendor/**'
+
+functions:
+  demo-1-no-swoole:
+    description: 'To handle blocking IOs in PHP without using Swoole. It takes about 5 seconds to finish.'
+    runtime: php-81
+    handler: demo/1-no-swoole.php
+    timeout: 60
+  demo-2-with-swoole:
+    description: 'To handle IOs concurrently using Swoole. It takes about 5 seconds to finish.'
+    runtime: php-81
+    layers:
+      - ${bref-extra:swoole-php-81}
+    handler: demo/2-with-swoole.php
+    timeout: 60
+  demo-3-use-customized-runner:
+    description: 'To handle IOs concurrently using Swoole, with customized PHP runner in use. It takes about 0 second to finish without waiting asynchronous IO operations to complete.'
+    runtime: php-81
+    layers:
+      - ${bref-extra:swoole-php-81}
+    environment:
+      BREF_LOOP_MAX: 500
+      BREF_PHP_RUNNER: "\\Bref\\Runner\\Swoole"
+    handler: demo/3-use-customized-runner.php
+    timeout: 900
+  demo-4-use-customized-runner:
+    description: 'To handle IOs concurrently using Swoole, with customized PHP runner in use. It waits IO operations to complete and takes about 1 second to finish.'
+    runtime: php-81
+    layers:
+      - ${bref-extra:swoole-php-81}
+    environment:
+      BREF_PHP_RUNNER: "\\Bref\\Runner\\Swoole"
+    handler: demo/4-use-customized-runner.php
+    timeout: 60
