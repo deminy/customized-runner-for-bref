@@ -31,6 +31,8 @@ Here we have four Lambda functions created. Each performs five IO operations, an
 An IO operation could be a REST API call, a database query, a file read/write, etc. In the examples, we use the PHP
 function `sleep()` to simulate IO operations.
 
+Before deploying any of the following functions, please run Composer command `composer update --no-dev` first to install PHP packages.
+
 **`1`. Lambda function `demo-1-no-swoole`**
 
 This one shows how to handle blocking IOs is handled in PHP.
@@ -50,7 +52,7 @@ This example shows how to handle IOs concurrently using Swoole, with customized 
 second to finish without waiting asynchronous IO operations to complete.
 
 By using a customized PHP runner, we can have the Lambda function return a response immediately and let Swoole handle
-the rest. Swoole can keep working in same the execution environment after the response is returned.
+the rest. Swoole can keep working in the same execution environment after the response is returned.
 
 The function used in the example takes 60 seconds to finish (or 300 seconds if Swoole is not in use). If we invoke the
 Lambda function multiple times consecutively, you will notice that all the invocation requests can be handled by the same
