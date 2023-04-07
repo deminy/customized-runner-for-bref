@@ -27,7 +27,7 @@ class Swoole implements RunnerInterface
                     // handled properly. It would be better to have those errors properly addressed in the application.
                     //
                     // Here we only print out the error message to help developers to debug the issue.
-                    echo $e->getMessage(), "(exception: ", get_class($e), "; error code: {$e->getStatus()})";
+                    echo $e->getMessage(), "(exception: ", get_class($e), "; error code: {$e->getStatus()}; flag: {$e->getFlags()})";
                 }
             }
         });
