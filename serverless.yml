@@ -47,3 +47,12 @@ functions:
       BREF_PHP_RUNNER: "\\Bref\\Runner\\Swoole"
     handler: demo/4-use-customized-runner.php
     timeout: 60
+  demo-5-use-customized-runner:
+    description: 'Similar to example 3, but this time we have the coroutines finish sooner print out something when they finish.'
+    runtime: php-81
+    layers:
+      - ${bref-extra:swoole-php-81}
+    environment:
+      BREF_PHP_RUNNER: "\\Bref\\Runner\\Swoole"
+    handler: demo/5-use-customized-runner.php
+    timeout: 60

@@ -58,9 +58,20 @@ The function used in the example takes 60 seconds to finish (or 300 seconds if S
 Lambda function multiple times consecutively, you will notice that all the invocation requests can be handled by the same
 execution environment. Furthermore, the billing duration is not 300 seconds, nor 60 seconds, but something less than 1 second.
 
+Please be aware that this example primarily serves as a demonstration and should not be considered a production-ready
+solution. Before implementing this approach in AWS Lambda, it is essential to evaluate the various limitations and adapt
+the code accordingly. There are some interesting discussions about this topic under
+[this GitHub issue](https://github.com/brefphp/bref/issues/1499). Please kindly check it out before using this approach
+in your project.
+
 **`4`. Lambda function `demo-4-use-customized-runner`**
 
 This example shows how to wait concurrent IO operations to complete before sending a response back.
+
+**`5`. Lambda function `demo-5-use-customized-runner`**
+
+Similar to example 3, but this time we have the coroutines finish sooner and print out something when they finish.
+Note that the messages are printed out after the response is sent back, and they could be printed out in any order.
 
 [1]: https://github.com/deminy/customized-runner-for-bref/blob/master/src/FunctionRuntime/Main.php
 [2]: https://github.com/deminy/customized-runner-for-bref/blob/master/bootstrap.php
