@@ -70,7 +70,7 @@ This example shows how to wait concurrent IO operations to complete before sendi
 
 **`5`. Lambda function `demo-5-use-customized-runner`**
 
-Similar to example 3, but this time we have the coroutines finish sooner and print out something when they finish.
+Similar to example 3, but this time we have the coroutines complete more quickly and provide output upon completion.
 Note that the messages are printed out after the response is sent back, and they could be printed out in any order.
 
 [1]: https://github.com/deminy/customized-runner-for-bref/blob/master/src/FunctionRuntime/Main.php

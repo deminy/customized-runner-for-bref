@@ -48,7 +48,7 @@ functions:
     handler: demo/4-use-customized-runner.php
     timeout: 60
   demo-5-use-customized-runner:
-    description: 'Similar to example 3, but this time we have the coroutines finish sooner print out something when they finish.'
+    description: 'Similar to example 3, but this time we have the coroutines complete more quickly and provide output upon completion.'
     runtime: php-81
     layers:
       - ${bref-extra:swoole-php-81}
