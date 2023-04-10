@@ -53,6 +53,15 @@ functions:
     layers:
       - ${bref-extra:swoole-php-81}
     environment:
-      BREF_PHP_RUNNER: "\\Bref\\Runner\\Swoole"
+      BREF_PHP_RUNNER: "\\Bref\\Runner\\SwooleDebugger"
+    handler: demo/5-use-customized-runner.php
+    timeout: 60
+  demo-6-use-customized-runner:
+    description: 'Exactly the same as example 5, except that it runs in different execution environments.'
+    runtime: php-81
+    layers:
+      - ${bref-extra:swoole-php-81}
+    environment:
+      BREF_PHP_RUNNER: "\\Bref\\Runner\\SwooleDebugger"
     handler: demo/5-use-customized-runner.php
     timeout: 60

@@ -70,10 +70,22 @@ This example shows how to wait concurrent IO operations to complete before sendi
 
 **`5`. Lambda function `demo-5-use-customized-runner`**
 
-Similar to example 3, but this time we have the coroutines complete more quickly and provide output upon completion.
+Similar to example 3, but with the following differences:
+
+* The coroutines complete more quickly.
+* Some output is included upon completion.
+* A customized PHP runner ([SwooleDebugger][5]) is used to print out debugging messages.
+
 Note that the messages are printed out after the response is sent back, and they could be printed out in any order.
+Also, the [SwooleDebugger][5] class is used only to debug the Swoole runner; it should not be considered as a part of
+the draft patch.
+
+**`6`. Lambda function `demo-6-use-customized-runner`**
+
+Exactly the same as example 5, except that it runs in different execution environments.
 
 [1]: https://github.com/deminy/customized-runner-for-bref/blob/master/src/FunctionRuntime/Main.php
 [2]: https://github.com/deminy/customized-runner-for-bref/blob/master/bootstrap.php
 [3]: https://github.com/deminy/customized-runner-for-bref/blob/master/src/Runner/RunnerInterface.php
 [4]: https://github.com/deminy/customized-runner-for-bref/blob/master/src/Runner/Swoole.php
+[5]: https://github.com/deminy/customized-runner-for-bref/blob/master/src/Runner/SwooleDebugger.php
